@@ -24,8 +24,8 @@
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした</h2>
-                <p><a href="<c:url value='/employees/index'/>">一覧に戻る</a></p>
             </c:otherwise>
         </c:choose>
+                <p><a href="<c:url value='/employees/index'/>">一覧に戻る</a></p>
     </c:param>
 </c:import>
