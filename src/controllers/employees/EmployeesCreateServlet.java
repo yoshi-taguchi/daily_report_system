@@ -1,5 +1,4 @@
 package controllers.employees;
-
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
@@ -18,16 +17,16 @@ import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
- * Servlet implementation class EmployeeCreateServlet
+ * Servlet implementation class EmployeesCreateServlet
  */
 @WebServlet("/employees/create")
-public class EmployeeCreateServlet extends HttpServlet {
+public class EmployeesCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeCreateServlet() {
+    public EmployeesCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
