@@ -32,7 +32,7 @@
                         <tr>
                             <th>更新日時</th>
                             <td>
-                                <fmt:formatDate value="${emoloyee.updated_at }" pattern="yyyy/mm/dd HH:mm:ss"/>
+                                <fmt:formatDate value="${employee.updated_at }" pattern="yyyy/MM/dd HH:mm:ss"/>
                             </td>
                         </tr>
                     </tbody>
