@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name="employee_follow")
     @NamedQuery(
             name="getAllMyFollows",
-            query="SELECT ef FROM Employee_Follow AS ef WHERE ef.employee = :employee")
+            query="SELECT ef FROM Employee_Follow AS ef WHERE ef.employee = :employee ORDER BY ef.id DESC")
 public class Employee_Follow {
 
     @Id

@@ -37,7 +37,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p><a href="<c:url value='/follow?id=${employee.id }'/>">この従業員情報をフォローする</a></p>
+                <p><a href="<c:url value='/follow/create?id=${employee.id }'/>">この従業員情報をフォローする</a></p>
                 <p><a href="<c:url value='/employees/edit?id=${employee.id }'/>">この従業員情報を編集する</a></p>
             </c:when>
             <c:otherwise>

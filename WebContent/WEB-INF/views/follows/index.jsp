@@ -8,10 +8,13 @@
                 <tr>
                     <th class="follow_code">社員番号</th>
                     <th class="follow_name">氏名</th>
+
+
                 </tr>
                 <c:forEach var="follows" items="${ef }" varStatus="status">
                     <tr>
-                        <td class="follow_code"><c:out value = "${ef.follow.name}"/></td>
+                        <td class="follow_code"><c:out value = "${follows.follow.code}"/></td>
+                        <td class="follow_name"><c:out value = "${follows.follow.name}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>

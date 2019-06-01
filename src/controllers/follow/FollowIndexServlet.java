@@ -39,23 +39,15 @@ public class FollowIndexServlet extends HttpServlet {
 
         Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
 
-        int page;
-            try{
-                page = Integer.parseInt(request.getParameter("page"));
-            } catch(Exception e) {
-                page = 1;
-            }
+
 
         List<Employee_Follow> ef = em.createNamedQuery("getAllMyFollows", Employee_Follow.class)
                                                         .setParameter("employee",login_employee )
-                                                        .setFirstResult(15 * (page - 1))
-                                                        .setMaxResults(15)
                                                         .getResultList();
 
         em.close();
 
         request.setAttribute("ef", ef);
-        request.setAttribute("page", page);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/follows/index.jsp");
         rd.forward(request, response);
