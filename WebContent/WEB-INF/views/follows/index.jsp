@@ -8,13 +8,23 @@
                 <tr>
                     <th class="follow_code">社員番号</th>
                     <th class="follow_name">氏名</th>
-
-
+                    <th>操作</th>
                 </tr>
                 <c:forEach var="follows" items="${ef }" varStatus="status">
                     <tr>
                         <td class="follow_code"><c:out value = "${follows.follow.code}"/></td>
                         <td class="follow_name"><c:out value = "${follows.follow.name}"/></td>
+                         <td>
+                            <c:choose>
+                                <c:when test="${follows.follow.delete_flag == 1}">
+                                    （削除済み）
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/employees/show?id=${follows.follow.id}' />">詳細を表示</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+
                     </tr>
                 </c:forEach>
             </tbody>
