@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Employee;
 import models.Employee_Follow;
+import models.validators.FollowValidator;
 import utils.DBUtil;
 
 /**
@@ -37,18 +38,33 @@ public class FollowCreateServlet extends HttpServlet {
 
     Employee_Follow ef = new Employee_Follow();
     ef.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+    //バリデーション用に呼び出し
+    Employee employee = ef.getEmployee();
 
     Employee follow = em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
     ef.setFollow(follow);
 
-    em.getTransaction().begin();
-    em.persist(ef);
-    em.getTransaction().commit();
+    String error = FollowValidator.validateFollow(employee,follow,true);
+        if(error.equals("")){
+            em.getTransaction().begin();
+            em.persist(ef);
+            em.getTransaction().commit();
 
-    em.close();
-    request.getSession().setAttribute("flush", "従業員をフォローしました");
+            em.close();
+            request.getSession().setAttribute("flush", "従業員をフォローしました");
 
-    response.sendRedirect(request.getContextPath() + "/reports/index");
+            response.sendRedirect(request.getContextPath() + "/reports/index");
+        } else{
+            em.close();
+            request.setAttribute("_token", request.getSession().getId());
+            request.setAttribute("employee", employee);
+            request.setAttribute("errors", error);
+            request.getSession().setAttribute("flush", "既にフォローしています");
+
+            response.sendRedirect(request.getContextPath() + "/reports/index");
+
+            }
+
     }
 
 }
