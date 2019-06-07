@@ -42,8 +42,10 @@
                 </c:choose>
             </c:forEach>
         </div>
-
-        <p><a href="<c:url value='/follow/index' />">フォローの一覧</a></p>
+        <c:if test="${sessionScope.login_employee.admin_flag == 1}">
+            <p><a href="<c:url value='/follow/index' />">フォローの一覧</a></p>
+            <p><a href="<c:url value='/follow/reports/index' />">フォロー中の従業員の日報一覧</a></p>
+        </c:if>
         <p><a href="<c:url value='/reports/new' />">新規日報の登録</a></p>
     </c:param>
 </c:import>
