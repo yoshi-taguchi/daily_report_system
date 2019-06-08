@@ -53,7 +53,7 @@ public class FollowCreateServlet extends HttpServlet {
             em.close();
             request.getSession().setAttribute("flush", "従業員をフォローしました");
 
-            response.sendRedirect(request.getContextPath() + "/reports/index");
+            response.sendRedirect(request.getContextPath() + "/follow/index");
         } else{
             em.close();
             request.setAttribute("_token", request.getSession().getId());
@@ -61,7 +61,7 @@ public class FollowCreateServlet extends HttpServlet {
             request.setAttribute("errors", error);
             request.getSession().setAttribute("flush", "既にフォローしています");
 
-            response.sendRedirect(request.getContextPath() + "/reports/index");
+            response.sendRedirect(request.getContextPath() + "/follow/index");
 
             }
 

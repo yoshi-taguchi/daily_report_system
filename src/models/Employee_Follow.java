@@ -24,6 +24,10 @@ import javax.persistence.UniqueConstraint;
     @NamedQuery(
             name = "checkFollowCombination",
             query = "SELECT COUNT(ef) FROM Employee_Follow AS ef WHERE ef.employee = :employee AND ef.follow = :follow"
+            ),
+    @NamedQuery(
+            name = "getOneFollow",
+            query = "SELECT ef FROM Employee_Follow AS ef WHERE ef.employee = :employee AND ef.follow = :follow"
             )
 })
 public class Employee_Follow {

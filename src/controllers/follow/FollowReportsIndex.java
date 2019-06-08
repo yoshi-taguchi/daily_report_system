@@ -42,13 +42,6 @@ public class FollowReportsIndex extends HttpServlet {
 
         Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
 
-        int page;
-        try{
-            page = Integer.parseInt(request.getParameter("page"));
-        } catch(Exception e) {
-            page = 1;
-        }
-
         List<Employee_Follow> ef = em.createNamedQuery("getAllMyFollows", Employee_Follow.class)
                 .setParameter("employee",login_employee )
                 .getResultList();
@@ -76,7 +69,6 @@ public class FollowReportsIndex extends HttpServlet {
         em.close();
 
         request.setAttribute("reports", reports);
-        request.setAttribute("page", page);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/follows/reports.jsp");
         rd.forward(request, response);

@@ -39,8 +39,6 @@ public class FollowIndexServlet extends HttpServlet {
 
         Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
 
-
-
         List<Employee_Follow> ef = em.createNamedQuery("getAllMyFollows", Employee_Follow.class)
                                                         .setParameter("employee",login_employee )
                                                         .getResultList();
@@ -49,6 +47,10 @@ public class FollowIndexServlet extends HttpServlet {
 
         request.setAttribute("ef", ef);
 
+        if(request.getSession().getAttribute("flush") != null) {
+            request.setAttribute("flush", request.getSession().getAttribute("flush"));
+            request.getSession().removeAttribute("flush");
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/follows/index.jsp");
         rd.forward(request, response);
     }
